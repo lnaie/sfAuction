@@ -1,38 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="SFAuctionAppType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
-  <Parameters>
-    <Parameter Name="Svc.Auction_MinReplicaSetSize" DefaultValue="2" />
-    <Parameter Name="Svc.Auction_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="Svc.Auction_PartitionCount" DefaultValue="5" />
-    <Parameter Name="Svc.ApiGateway_InstanceCount" DefaultValue="1" />
-    <Parameter Name="Svc.WebsiteType_InstanceCount" DefaultValue="1" />
-  </Parameters>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Pkg-Svc.Website" ServiceManifestVersion="1.0.0" />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Pkg-Svc.Auction" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Pkg-Svc.ApiGateway" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-  </ServiceManifestImport>
-  <DefaultServices>
-    <Service Name="Svc.WebSiteSvcInstance">
-      <StatelessService ServiceTypeName="Svc.WebsiteType" InstanceCount="[Svc.WebsiteType_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="ApiGatewaySvcInstance">
-      <StatelessService ServiceTypeName="ApiGatewaySvcType" InstanceCount="[Svc.ApiGateway_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="AuctionSvcInstance">
-      <StatefulService ServiceTypeName="AuctionSvcType" TargetReplicaSetSize="[Svc.Auction_TargetReplicaSetSize]" MinReplicaSetSize="[Svc.Auction_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[Svc.Auction_PartitionCount]" LowKey="-2147483648" HighKey="2147483647" />
-      </StatefulService>
-    </Service>
-  </DefaultServices>
+   <Parameters>
+      <Parameter Name="Svc.Auction_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="Svc.Auction_TargetReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="Svc.Auction_PartitionCount" DefaultValue="5" />
+      <Parameter Name="Svc.ApiGateway_InstanceCount" DefaultValue="1" />
+      <Parameter Name="Svc.WebsiteType_InstanceCount" DefaultValue="1" />
+   </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="Pkg-Svc.Website" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="Pkg-Svc.Auction" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="Pkg-Svc.ApiGateway" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+   </ServiceManifestImport>
+   <DefaultServices>
+      <Service Name="Svc.WebSiteSvcInstance">
+         <StatelessService ServiceTypeName="Svc.WebsiteType" InstanceCount="[Svc.WebsiteType_InstanceCount]">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
+      <Service Name="ApiGatewaySvcInstance">
+         <StatelessService ServiceTypeName="ApiGatewaySvcType" InstanceCount="[Svc.ApiGateway_InstanceCount]">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
+      <Service Name="AuctionSvcInstance">
+         <StatefulService ServiceTypeName="AuctionSvcType" TargetReplicaSetSize="[Svc.Auction_TargetReplicaSetSize]" MinReplicaSetSize="[Svc.Auction_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[Svc.Auction_PartitionCount]" LowKey="-2147483648" HighKey="2147483647" />
+         </StatefulService>
+      </Service>
+   </DefaultServices>
 </ApplicationManifest>

@@ -15,9 +15,6 @@
                                     StoreLocation="CurrentUser"
                                     StoreName="My" />
   -->
-  <ClusterConnectionParameters />
-  <ApplicationParameterFile Path="..\ApplicationParameters\Local.xml" />
-  <UpgradeDeployment Mode="UnmonitoredAuto" Enabled="false">
-    <Parameters UpgradeReplicaSetCheckTimeoutSec="1" Force="True" />
-  </UpgradeDeployment>
+  <ClusterConnectionParameters ConnectionEndpoint="192.168.1.101:19000" />
+  <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
 </PublishProfile>

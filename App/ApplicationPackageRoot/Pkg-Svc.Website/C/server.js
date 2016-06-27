@@ -22,8 +22,7 @@ function getFile(pathname, res, mimeType) {
         if (!err) {
             res.writeHead(200, {
                 "Content-type": mimeType,
-                "Content-Length": contents.length,
-                "Access-Control-Allow-Origin": "*"
+                "Content-Length": contents.length
             });
             res.end(contents);
         } else {
