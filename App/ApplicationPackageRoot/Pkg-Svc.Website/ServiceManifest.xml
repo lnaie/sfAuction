@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                 Name="Pkg-Svc.Website" Version="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <ServiceTypes>
+      <StatelessServiceType ServiceTypeName="Svc.WebsiteType" UseImplicitHost="true"/>
+   </ServiceTypes>
+   <CodePackage Name="C" Version="1.0.0">
+      <EntryPoint>
+         <ExeHost>
+            <Program>node.exe</Program>
+            <Arguments>Server.js</Arguments>
+            <WorkingFolder>CodePackage</WorkingFolder>
+           <ConsoleRedirection FileRetentionCount="5" FileMaxSizeInKb="2048"/>
+         </ExeHost>
+      </EntryPoint>
+   </CodePackage>
+   <Resources>
+      <Endpoints>
+         <Endpoint Name="Svc.WebTypeEndpoint" Protocol="http" Type="Input" Port="8080" />
+      </Endpoints>
+   </Resources>
+</ServiceManifest>

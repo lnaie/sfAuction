@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+
+The settings used within this ClusterManifest are expressly for use only
+within a developer single-box environment.  Any use of these settings outside
+of that environment are highly likely to produce incorrect, and misperforming
+systems.
+
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
+
+-->
+<ClusterManifest
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://schemas.microsoft.com/2011/01/fabric"
+    Name="ComputerName-Local-Cluster"
+    Version="1.0">
+  <NodeTypes>
+    <NodeType Name="01-Americas-FE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19000" />
+        <LeaseDriverEndpoint Port="19001" />
+        <ClusterConnectionEndpoint Port="19002" />
+        <HttpGatewayEndpoint Port="19007" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19006" />
+        <ApplicationEndpoints StartPort="30001" EndPort="31000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="true"/>
+        <Property Name="Continent" Value="Americas"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="02-Americas-FE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19010" />
+        <LeaseDriverEndpoint Port="19011" />
+        <ClusterConnectionEndpoint Port="19012" />
+        <HttpGatewayEndpoint Port="19017" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19016" />
+        <ApplicationEndpoints StartPort="31001" EndPort="32000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="true"/>
+        <Property Name="Continent" Value="Americas"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="03-Americas-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19020" />
+        <LeaseDriverEndpoint Port="19021" />
+        <ClusterConnectionEndpoint Port="19022" />
+        <HttpGatewayEndpoint Port="19027" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19026" />
+        <ApplicationEndpoints StartPort="32001" EndPort="33000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Americas"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="04-Americas-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19030" />
+        <LeaseDriverEndpoint Port="19031" />
+        <ClusterConnectionEndpoint Port="19032" />
+        <HttpGatewayEndpoint Port="19037" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19036" />
+        <ApplicationEndpoints StartPort="33001" EndPort="34000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Americas"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="05-Americas-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19040" />
+        <LeaseDriverEndpoint Port="19041" />
+        <ClusterConnectionEndpoint Port="19042" />
+        <HttpGatewayEndpoint Port="19047" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19046" />
+        <ApplicationEndpoints StartPort="34001" EndPort="35000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Americas"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="06-Americas-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19050" />
+        <LeaseDriverEndpoint Port="19051" />
+        <ClusterConnectionEndpoint Port="19052" />
+        <HttpGatewayEndpoint Port="19057" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19056" />
+        <ApplicationEndpoints StartPort="35001" EndPort="36000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Americas"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+
+
+    <NodeType Name="07-Europe-FE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19060" />
+        <LeaseDriverEndpoint Port="19061" />
+        <ClusterConnectionEndpoint Port="19062" />
+        <HttpGatewayEndpoint Port="19067" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19066" />
+        <ApplicationEndpoints StartPort="36001" EndPort="37000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="true"/>
+        <Property Name="Continent" Value="Europe"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="08-Europe-FE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19070" />
+        <LeaseDriverEndpoint Port="19071" />
+        <ClusterConnectionEndpoint Port="19072" />
+        <HttpGatewayEndpoint Port="19077" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19076" />
+        <ApplicationEndpoints StartPort="37001" EndPort="38000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="true"/>
+        <Property Name="Continent" Value="Europe"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="09-Europe-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19080" />
+        <LeaseDriverEndpoint Port="19081" />
+        <ClusterConnectionEndpoint Port="19082" />
+        <HttpGatewayEndpoint Port="19087" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19086" />
+        <ApplicationEndpoints StartPort="38001" EndPort="39000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Europe"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="10-Europe-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19090" />
+        <LeaseDriverEndpoint Port="19091" />
+        <ClusterConnectionEndpoint Port="19092" />
+        <HttpGatewayEndpoint Port="19097" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19096" />
+        <ApplicationEndpoints StartPort="39001" EndPort="40000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Europe"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="11-Europe-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19100" />
+        <LeaseDriverEndpoint Port="19101" />
+        <ClusterConnectionEndpoint Port="19102" />
+        <HttpGatewayEndpoint Port="19107" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19106" />
+        <ApplicationEndpoints StartPort="40001" EndPort="41000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Europe"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="12-Europe-BE">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19110" />
+        <LeaseDriverEndpoint Port="19111" />
+        <ClusterConnectionEndpoint Port="19112" />
+        <HttpGatewayEndpoint Port="19117" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19116" />
+        <ApplicationEndpoints StartPort="41001" EndPort="42000" />
+      </Endpoints>
+      <PlacementProperties>
+        <Property Name="FrontEnd" Value="false"/>
+        <Property Name="Continent" Value="Europe"/>
+      </PlacementProperties>
+      <Capacities>
+        <Capacity Name="Disk" Value="100"/>
+      </Capacities>
+    </NodeType>
+  </NodeTypes>
+  <Infrastructure>
+    <WindowsServer IsScaleMin="true">
+      <NodeList>
+        <Node NodeName="01-Americas-FE" IPAddressOrFQDN="localhost" IsSeedNode="true"  NodeTypeRef="01-Americas-FE" FaultDomain="fd:/FD01" UpgradeDomain="UD1" />
+        <Node NodeName="02-Americas-FE" IPAddressOrFQDN="localhost" IsSeedNode="true"  NodeTypeRef="02-Americas-FE" FaultDomain="fd:/FD02" UpgradeDomain="UD2" />
+        <Node NodeName="03-Americas-BE" IPAddressOrFQDN="localhost" IsSeedNode="true"  NodeTypeRef="03-Americas-BE" FaultDomain="fd:/FD03" UpgradeDomain="UD3" />
+        <Node NodeName="04-Americas-BE" IPAddressOrFQDN="localhost" IsSeedNode="false" NodeTypeRef="04-Americas-BE" FaultDomain="fd:/FD04" UpgradeDomain="UD4" />
+        <Node NodeName="05-Americas-BE" IPAddressOrFQDN="localhost" IsSeedNode="false" NodeTypeRef="05-Americas-BE" FaultDomain="fd:/FD05" UpgradeDomain="UD5" />
+        <Node NodeName="06-Americas-BE" IPAddressOrFQDN="localhost" IsSeedNode="false" NodeTypeRef="06-Americas-BE" FaultDomain="fd:/FD06" UpgradeDomain="UD6" />
+        <Node NodeName="07-Europe-FE" IPAddressOrFQDN="localhost" IsSeedNode="false"  NodeTypeRef="07-Europe-FE" FaultDomain="fd:/FD07" UpgradeDomain="UD7" />
+        <Node NodeName="08-Europe-FE" IPAddressOrFQDN="localhost" IsSeedNode="false"  NodeTypeRef="08-Europe-FE" FaultDomain="fd:/FD08" UpgradeDomain="UD8" />
+        <Node NodeName="09-Europe-BE" IPAddressOrFQDN="localhost" IsSeedNode="false"  NodeTypeRef="09-Europe-BE" FaultDomain="fd:/FD09" UpgradeDomain="UD9" />
+        <Node NodeName="10-Europe-BE" IPAddressOrFQDN="localhost" IsSeedNode="false" NodeTypeRef="10-Europe-BE" FaultDomain="fd:/FD10" UpgradeDomain="UD10" />
+        <Node NodeName="11-Europe-BE" IPAddressOrFQDN="localhost" IsSeedNode="false" NodeTypeRef="11-Europe-BE" FaultDomain="fd:/FD11" UpgradeDomain="UD11" />
+        <Node NodeName="12-Europe-BE" IPAddressOrFQDN="localhost" IsSeedNode="false" NodeTypeRef="12-Europe-BE" FaultDomain="fd:/FD12" UpgradeDomain="UD12" />
+      </NodeList>
+    </WindowsServer>
+  </Infrastructure>
+  <FabricSettings>
+    <Section Name="Security">
+      <Parameter Name="ClusterCredentialType" Value="None" />
+      <Parameter Name="ServerAuthCredentialType" Value="None" />
+    </Section>
+    <Section Name="FailoverManager">
+      <!-- expected cluster size allows the placement to start when the cluster is started. This value should be less than total number of nodes
+                 as without it the FailoverManager will not start the placement of the user services. This value should be 80% to 90% of the cluster size.
+            -->
+      <Parameter Name="ExpectedClusterSize" Value="4" />
+      <!-- The default target and min replica set sizes are 7 and 5. The below configuration is not required for cluster that have 7 or more nodes.  -->
+      <Parameter Name="TargetReplicaSetSize" Value="5" />
+      <Parameter Name="MinReplicaSetSize" Value="3" />
+      <Parameter Name="ReconfigurationTimeLimit" Value="20" />
+      <Parameter Name="BuildReplicaTimeLimit" Value="20" />
+      <Parameter Name="CreateInstanceTimeLimit" Value="20" />
+      <Parameter Name="PlacementTimeLimit" Value="20" />
+    </Section>
+    <Section Name="ReconfigurationAgent">
+      <!-- Nodes send load reports every 10 seconds.  -->
+      <Parameter Name="SendLoadReportInterval" Value="10" />
+      
+      <Parameter Name="ServiceApiHealthDuration" Value="20" />
+      <Parameter Name="ServiceReconfigurationApiHealthDuration" Value="20" />
+      <Parameter Name="LocalHealthReportingTimerInterval" Value="5" />
+      <Parameter Name="IsDeactivationInfoEnabled" Value="true" />
+    </Section>
+    <Section Name="ClusterManager">
+      <!-- The default target and min replica set sizes are 7 and 5. The below configuration is not required for cluster that have 7 or more nodes.  -->
+      <Parameter Name="TargetReplicaSetSize" Value="5" />
+      <Parameter Name="MinReplicaSetSize" Value="3" />
+      <Parameter Name="UpgradeStatusPollInterval" Value="5" />
+      <Parameter Name="UpgradeHealthCheckInterval" Value="5" />
+      <Parameter Name="FabricUpgradeHealthCheckInterval" Value="5" />
+    </Section>
+    <Section Name="NamingService">
+      <!-- The default target and min replica set sizes are 7 and 5. The below configuration is not required for cluster that have 7 or more nodes.  -->
+      <Parameter Name="TargetReplicaSetSize" Value="5" />
+      <Parameter Name="MinReplicaSetSize" Value="3" />
+    </Section>
+    <Section Name="Management">
+      <Parameter Name="ImageStoreConnectionString" Value="file:C:\SfDevCluster\Data\ImageStore" />
+      <Parameter Name="ImageCachingEnabled" Value="false" />
+      <Parameter Name="EnableDeploymentAtDataRoot" Value="true"/>
+    </Section>
+    <Section Name="Hosting">
+      <Parameter Name="EndpointProviderEnabled" Value="true" />
+      <Parameter Name="RunAsPolicyEnabled" Value="true" />
+      <Parameter Name="DeactivationScanInterval" Value="60" />
+      <Parameter Name="DeactivationGraceInterval" Value="10" />
+      <Parameter Name="EnableProcessDebugging" Value="true" />
+      <Parameter Name="ServiceTypeRegistrationTimeout" Value="20" />
+      <Parameter Name="CacheCleanupScanInterval" Value="300" />
+    </Section>
+    <Section Name="HttpGateway">
+      <Parameter Name="IsEnabled" Value="true" />
+    </Section>
+    <Section Name="PlacementAndLoadBalancing">
+      <!-- Balance the load on the cluster every 10 seconds.  -->
+      <Parameter Name="MinLoadBalancingInterval" Value="10" />
+    </Section>
+    <Section Name="Federation">
+      <Parameter Name="NodeIdGeneratorVersion" Value="V3" />
+    </Section>
+    <Section Name="Trace/Etw">
+      <Parameter Name="Level" Value="4" />
+    </Section>
+    <!-- Configure the DCA to cleanup the log folder only. The collection of the logs, performance counters and crashdumps is not performed on the local machine. -->
+    <Section Name="Diagnostics">
+      <Parameter Name="ProducerInstances" Value="ServiceFabricEtlFile, ServiceFabricPerfCtrFolder" />
+      <Parameter Name="MaxDiskQuotaInMB" Value="10240" />
+    </Section>
+    <Section Name="ServiceFabricEtlFile">
+      <Parameter Name="ProducerType" Value="EtlFileProducer" />
+      <Parameter Name="IsEnabled" Value="true" />
+      <Parameter Name="EtlReadIntervalInMinutes" Value=" 5" />
+      <Parameter Name="DataDeletionAgeInDays" Value="3" />
+    </Section>
+    <Section Name="ServiceFabricPerfCtrFolder">
+      <Parameter Name="ProducerType" Value="FolderProducer" />
+      <Parameter Name="IsEnabled" Value="true" />
+      <Parameter Name="FolderType" Value="WindowsFabricPerformanceCounters" />
+      <Parameter Name="DataDeletionAgeInDays" Value="3" />
+    </Section>
+    <Section Name="TransactionalReplicator">
+      <Parameter Name="CheckpointThresholdInMB" Value="64" />
+    </Section>
+  </FabricSettings>
+</ClusterManifest>

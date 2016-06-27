@@ -1,0 +1,234 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#banner {
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.image {
+    margin-right: 25px;
+}
+
+#addnew {
+    /* margin-top: 25px;*/
+    margin-left: 0px;
+    font-weight:bold;
+}
+#sfAuctionTitleLabel
+{
+    color:grey;
+    font-size:25px;
+}
+
+#loginUser
+{
+    margin-left:15px;   
+    width:120px; 
+}
+
+#createUser
+{
+    width:120px; 
+    float:right; 
+}
+
+#title {
+    margin-top: 20px;
+    margin-bottom: 2px;
+    float: left;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#logo {
+    width: 600px;
+    float: left;
+}
+
+small {
+    float: left;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    color: #9E9E9E;
+}
+
+#username {
+    float: right;
+    margin: 50px 0 0 100px;
+}
+
+.name {
+    font-weight: 400;
+    font-size: 21px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.sellerName {
+    font-size: 14px;
+}
+
+.yourbid {
+    margin: 0 30px 0 3px;
+}
+
+.yourbid2 {
+    margin: 0 0 0 48px;
+}
+
+.bids {
+    font-size: 12px;
+}
+
+.glyphicon-time {
+    margin-left: 81px;
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+.place {
+    float:right;
+    margin-right: 20px;
+    margin-top: 6px;
+}
+
+.input {
+    float:right;
+    margin-left: 4px;
+    margin-right: 12px;
+    margin-top: 8px;
+    line-height: 37px;
+    font-size: 20px;
+    border-radius: 8px;
+    border-style:solid;
+    border-color: #B3B3B3;
+}
+
+.time {
+     margin-left: 1px;
+}
+
+.dollar {
+    float: right;
+    font-weight: 500;
+    font-size: 30px;
+    margin-right: 5px;
+    margin-top: 4px;
+}
+
+.bottominfo {
+    margin-top: 10px;
+}
+
+.left {
+     float: left;
+}
+
+.right {   
+    float: left;
+}
+
+.list-group {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    height: 200px;
+}
+
+.error{
+    color:red;
+}
+
+#usernamedisplay {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+
+
+#useremaildisplay {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+
+#usernamecontainer {
+    display: none;
+    margin-top: 15px;
+}
+
+#useremailcontainer {
+    display: none;
+    margin-top: 35px;
+}
+
+#formbox {
+    float: right;
+    position:static;
+    width: 330px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+#bg { 
+    display: none;  
+    position: absolute;  
+    top: 0%;  
+    left: 0%;  
+    width: 100%;  
+    height: 100%;  
+    background-color: black;  
+    z-index:1001;  
+    -moz-opacity: 0.7;  
+    opacity:.70;  
+    filter: alpha(opacity=70);
+}
+
+#show {
+    border-radius: 19px;
+    display: none;  
+    position: absolute;  
+    top: 25%;  
+    left: 27%;  
+    width: 45%;  
+    height: 50%;  
+    padding: 25px 63px 0 63px;  
+    border: 10px outset #1abc9c;  
+    background-color: white;  
+    z-index:1002;  
+    overflow: auto;
+}
+
+#logout {
+    cursor: pointer;
+    margin-left: 17px;
+}
+
+.form-control, .select2-search input[type="text"] {
+    line-height: 2;
+}
+
+#btnsubmit {
+    margin-right: 20px;
+}
+
+#show h6 {
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 30px;
+}
+
+#buttonbox {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/SFAuction" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Svc.Auction_MinReplicaSetSize" Value="2" />
+    <Parameter Name="Svc.Auction_TargetReplicaSetSize" Value="3" />
+    <Parameter Name="Svc.Auction_PartitionCount" Value="5" />
+    <Parameter Name="Svc.ApiGateway_InstanceCount" Value="1" />
+    <Parameter Name="Svc.WebsiteType_InstanceCount" Value="1" />
+  </Parameters>
+</Application>

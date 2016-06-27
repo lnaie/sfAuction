@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.1.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.1.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.props')" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>91c86f9b-3867-4288-a16d-99b1c52188db</ProjectGuid>
+    <ProjectVersion>1.1</ProjectVersion>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ApplicationParameters\Cloud.xml" />
+    <None Include="ApplicationParameters\Local.xml" />
+    <None Include="PublishProfiles\Cloud.xml" />
+    <None Include="PublishProfiles\Local.xml" />
+    <None Include="Scripts\Deploy-FabricApplication.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Svc.Auction\Svc.Auction.csproj" />
+    <ProjectReference Include="..\Svc.ApiGateway\Svc.ApiGateway.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationPackageRoot\ApplicationManifest.xml" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\404.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\images\band-2.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\images\child-bicycle.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\images\diamond-ring.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\images\hawaii.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\images\lumia-950-xl-hero-jpg.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\index.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\css\bootstrap-theme.css.map">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\css\bootstrap-theme.min.css">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\css\bootstrap.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\css\bootstrap.css.map">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\css\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\js\bootstrap.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\bootstrap\js\jquery-1.11.3.min.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\.editorconfig" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\bower.json" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\CHANGELOG.md" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\css\flat-ui.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\css\flat-ui.css.map">
+      <DependentUpon>flat-ui.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\css\flat-ui.min.css">
+      <DependentUpon>flat-ui.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\css\vendor\bootstrap.min.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\glyphicons\selection.json" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-black.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-black.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-black.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-black.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bold.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bold.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bold.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bold.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-italic.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-italic.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-italic.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-italic.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-light.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-light.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-light.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-light.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-regular.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-regular.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-regular.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\fonts\lato\lato-regular.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\favicon.ico" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Book.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Calendar.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Chat.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Clipboard.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Compas.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Gift-Box.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Infinity-Loop.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Mail.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Map.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Pensils.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Pocket.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Retina-Ready.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Toilet-Paper.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\png\Watches.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\book.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\calendar.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\chat.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\clipboard.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\clocks.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\compas.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\gift-box.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\loop.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\mail.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\map.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\paper-bag.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\pencils.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\retina.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\ribbon.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\icons\svg\toilet-paper.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\login\icon.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\login\imac-2x.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\login\imac.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\tile\ribbon-2x.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\img\tile\ribbon.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\index.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\flat-ui.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\flat-ui.min.js">
+      <DependentUpon>flat-ui.js</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\vendor\html5shiv.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\vendor\jquery.min.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\vendor\jquery.min.map">
+      <DependentUpon>jquery.min.js</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\vendor\respond.min.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\vendor\video-js.swf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\dist\js\vendor\video.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\demo.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\demo.css.map">
+      <DependentUpon>demo.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\docs.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\docs.css.map">
+      <DependentUpon>docs.css</DependentUpon>
+    </Content>
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\src\demo.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\src\docs.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\css\src\prettyprint.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-2x.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-author.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-pic-1.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-pic-2.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-pic-3.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-pic-4.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-pic-5.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser-pic-6.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\browser.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\html-icon.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\logo-mask-2x.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\logo-mask.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\demo\video.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\example-image.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\footer\logo.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\getting-started\icomoon_import.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\img\video\poster.jpg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\js\application.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\assets\js\prettify.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\components.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\buttons.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\dropdowns.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\forms.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\navbar-fixed-top.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\navbar-static-top.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\navbars-with-elements.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\navbars.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\pagination.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\radiocheck.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\select.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\switches.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\tagsinput.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\thumbnails.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\tiles.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\todo-list.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\tooltips.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\typography.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\examples\vertical-slider.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\getting-started.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\docs\template.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\glyphicons\selection.json" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-black.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-black.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-black.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-black.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bold.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bold.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bold.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bold.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-italic.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-italic.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-italic.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-italic.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-light.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-light.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-light.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-light.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-regular.eot" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-regular.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-regular.ttf" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\fonts\lato\lato-regular.woff" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\Gruntfile.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\favicon.ico" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Book.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Calendar.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Chat.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Clipboard.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Compas.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Gift-Box.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Infinity-Loop.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Mail.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Map.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Pensils.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Pocket.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Retina-Ready.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Toilet-Paper.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\png\Watches.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\book.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\calendar.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\chat.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\clipboard.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\clocks.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\compas.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\gift-box.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\loop.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\mail.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\map.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\paper-bag.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\pencils.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\retina.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\ribbon.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\icons\svg\toilet-paper.svg" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\login\icon.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\login\imac-2x.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\login\imac.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\tile\ribbon-2x.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\img\tile\ribbon.png" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\index.html" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\js\.jscs.json" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\js\.jshintrc" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\js\radiocheck.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\.csscomb.json" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\.csslintrc" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\flat-ui.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\background-clip.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\background-variant.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\border-radius.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\buttons.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\center-block.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\clearfix.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\forms.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\gradients.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\grid.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\hide-text.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\image.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\nav-divider.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\navbar-vertical-align.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\opacity.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\pagination.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\pallets.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\reset-filter.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\resize.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\responsive-visibility.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\select.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\size.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\switches.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\tab-focus.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\text-emphasis.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\text-overflow.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\mixins\vendor-prefixes.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\button-groups.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\buttons.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\code.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\dropdowns.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\footer.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\forms.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\glyphicons.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\input-groups.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\local-fonts.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\login.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\navbar.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\pager.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\pagination.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\palette.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\print.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\progress-bars.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\radiocheck.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\scaffolding.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\select.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\share.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\slider.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\switch.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\tagsinput.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\thumbnails.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\tiles.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\todo-list.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\tooltip.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\type.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\typeahead.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\modules\video.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\spaces.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\less\variables.less" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\package.json" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\Flat-UI-master\README.md" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\jquery.cookie.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\jquery.countdown.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\jquery.countdown.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\jquery.plugin.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\lib\JsonRpcHelper.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\node.exe" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\server.js" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\C\style.css" />
+    <Content Include="ApplicationPackageRoot\Pkg-Svc.Website\ServiceManifest.xml" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <PropertyGroup>
+    <ApplicationProjectTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets</ApplicationProjectTargetsPath>
+  </PropertyGroup>
+  <Import Project="$(ApplicationProjectTargetsPath)" Condition="Exists('$(ApplicationProjectTargetsPath)')" />
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.1.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.1.0\build\Microsoft.VisualStudio.Azure.Fabric.Application.targets')" />
+</Project>

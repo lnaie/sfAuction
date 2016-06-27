@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>sfAuction Dashboard</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800|Orbitron:400,500,700' rel='stylesheet' type='text/css'>
+    <link href="lib/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+    <link href="lib/jquery.countdown.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="lib/bootstrap/js/jquery-1.11.3.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/JsonRpcHelper.js"></script>
+    <script language="javascript" type="text/javascript">
+        function showdiv() {
+            document.getElementById("bg").style.display = "block";
+            document.getElementById("show").style.display = "block";
+        }
+        function hidediv() {
+            document.getElementById("bg").style.display = 'none';
+            document.getElementById("show").style.display = 'none';
+        }
+
+    </script>
+    <script src="lib/jquery.plugin.js"></script>
+    <script src="lib/jquery.countdown.js"></script>
+    <!--<script type="text/javascript" src="lib/jquery.cookie.js"></script>-->
+</head>
+<body>
+    <div class="container-fluid col-md-10 col-md-offset-1" id="banner">
+        <div id="logo">
+            <h1 id="title">sfAuction</h1>
+            <div style="width:100%;">
+                <label id="sfAuctionTitleLabel">Live Auction Site running on Service Fabric</label>
+            </div>
+            <div>
+                <small><button id="addnew" class="btn btn-sm btn-primary" onclick="showdiv();">Add New Item</button></small>
+            </div>
+
+        </div>
+        <div id="formbox">
+            <div id="useremailcontainer">
+                <span class="fui-user"></span>
+                <span id="useremaildisplay">Useremail</span>
+                <a id="logout">Logout</a>
+            </div>
+            <div class="login-form">
+                <div class="form-group">
+                    <input type="text" class="form-control login-field" value="" placeholder="Enter your email" id="login-email" style="margin-top:20px;">
+                    <label class="login-field-icon fui-user" for="login-email"></label>
+                </div>
+                <button id="loginUser" type="submit" formmethod="get" class="btn btn-lg btn-primary" href="#">Login</button>
+                <button id="createUser" type="submit" formmethod="get" class="btn btn-lg btn-primary" href="#">Create User</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid col-md-10 col-md-offset-1">
+        <ul class="list-group" id="AuctionList"></ul>
+    </div>
+
+    <div id="bg"></div>
+    <div id="show">
+        <h6>Add New Item</h6>
+        <form>
+            <div class="form-group">
+                <input class="form-control" id="itemName" placeholder="Item Name" pattern="[a-zA-Z0-9\s]">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="expDate" placeholder="Expiration Date (format: 2015-11-04)" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="imageurl" placeholder="Image URI" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="price" placeholder="Starting Price" required>
+            </div>
+            <div class="error">
+                <label id="errorMessage" style="display:none;"></label>
+            </div>
+            <div id="buttonbox">
+                <input id="btnsubmit" class="btn btn-md btn-primary" type="button" value="Submit" />
+                <input id="btnclose" class="btn btn-md btn-primary" type="button" value="Cancel" onclick="hidediv();" />
+            </div>
+        </form>
+    </div>
+
+    <script>
+        //var uri = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/Rest';
+        var uri = location.protocol + '//' + location.hostname + ':8081/Rest';
+        var JsonRpcClient = new JsonRpcHelper(uri);
+        $(document).ready(function () {
+            // var email = $.cookie('email');
+            if (sessionStorage != undefined && sessionStorage.getItem("uemail") != null /*&& email != null*/) {
+                $(".login-form").hide();
+                $("#useremailcontainer").show();
+                $("#logout").show();
+                var userEmailValue = sessionStorage.getItem("uemail")
+                $("#useremaildisplay").text(userEmailValue);
+                $("#logout").show();
+            }
+            else {
+                $("#logout").hide();
+            }
+
+            $("#logout").click(function () {
+                sessionStorage.clear();
+                //$.cookie('email', null);
+                location.reload();
+            })
+        });
+
+        //Create User
+        $(document).ready(function () {
+            $("#createUser").click(function () {
+                var userEmail = document.getElementById("login-email").value;
+                if (userEmail === "" || userEmail === null) {
+                    alert("Please enter a valid email address in the Email Text box");
+                    hidediv();
+                    return;
+                }
+                JsonRpcClient.sendJsonRpcRequest(
+                    "CreateUserAsync",
+                    [userEmail],
+                    'GET',
+                     function (returnValue) {
+                         $(".login-form").hide();
+                         $("#useremaildisplay").text(userEmail);
+                         $("#useremailcontainer").show();
+                         sessionStorage.setItem("uemail", userEmail);
+                         //$.cookie('email', userEmail);
+                         $("#logout").show();
+                     });
+            });
+
+            $("#loginUser").click(function () {
+                var userEmail = document.getElementById("login-email").value;
+                if (userEmail === "" || userEmail === null) {
+                    alert("Please enter a valid email address in the Email Text box");
+                    hidediv();
+                    return;
+                }
+                JsonRpcClient.sendJsonRpcRequest(
+                                    "GetUserAsync",
+                                    [userEmail],
+                                    'GET',
+                                     function (returnValue) {
+                                         if (returnValue.Email.toLowerCase() === userEmail.toLowerCase()) {
+                                             $(".login-form").hide();
+                                             $("#useremaildisplay").text(returnValue.Email);
+                                             $("#useremailcontainer").show();
+                                             sessionStorage.setItem("uemail", returnValue.Email);
+                                             // $.cookie('email', userEmail);
+                                             $("#logout").show();
+                                         }
+                                     });
+
+            });
+        });
+
+        //Create an item
+        $(document).ready(function () {
+            $("#btnsubmit").click(function () {
+                var userEmail = "";
+                userEmail = sessionStorage.getItem("uemail");
+                if (userEmail === "" || userEmail === null) {
+                    alert("Please log in and then add the item");
+                    hidediv();
+                    return;
+                }
+                var itemName = document.getElementById("itemName").value;
+                var expDate = document.getElementById("expDate").value;
+                var imageurl = document.getElementById("imageurl").value;
+                var price = document.getElementById("price").value;
+                var validate = validateAddItemform();
+                if (validate === true) {
+                    JsonRpcClient.sendJsonRpcRequest(
+                    "CreateItemAsync",
+                    [userEmail, itemName, imageurl, expDate, price],
+                    'GET',
+                    function (returnValue) {
+                        hidediv();
+                        location.reload();
+                    });
+                }
+            });
+
+            function validateAddItemform() {
+                var errorMsg = "";
+                var itemName = document.getElementById("itemName").value;
+                var expDate = document.getElementById("expDate").value;
+                var imageurl = document.getElementById("imageurl").value;
+                var price = document.getElementById("price").value;
+
+                if (itemName === "" || itemName === null)
+                    errorMsg = "Please enter an item name value \n";
+                else {
+                    var pattern = new RegExp(/^[-\w\s]+$/);
+                    var isValid = pattern.test(itemName);
+                    if (!isValid) {
+                        errorMsg += "Please use only alpha numeric value and spaces in Item Name.Do not use any special Characters \n";
+                    }
+                }
+                if (expDate === "" || expDate === null)
+                    errorMsg += "Please enter an expiration date \n";
+                if (imageurl === "" || imageurl === null)
+                    errorMsg += "Please enter the Image Url \n";
+                if (price === "" || price === null)
+                    errorMsg += "Please enter a starting price \n";
+                else {
+                    if (price < 0)
+                        errorMsg += "Starting price should be a value greater than or equal to 0 \n";
+                }
+                if (errorMsg != "") {
+                    document.getElementById('errorMessage').innerText = errorMsg;
+                    document.getElementById('errorMessage').style.display = 'block';
+                    return false;
+                }
+
+                else {
+                    document.getElementById('errorMessage').style.display = 'none';
+                    return true;
+                }
+
+            }
+        });
+
+        $(document).ready(function () {
+            window.onload = function () {
+
+                // Get item names
+                JsonRpcClient.sendJsonRpcRequest(
+                    "GetAuctionItemsAsync",
+                    null,
+                    'GET',
+                    function (result) {
+                        var items = result;
+                        if (items.length <= 0) {
+                            SendPrimeRequest();
+                        }
+                        for (var i = 0; i < items.length; i++) {
+                            itemDetailHandle(items[i]);
+                        }
+                    });
+
+                function SendPrimeRequest() {
+                    var requestId = Math.floor(Math.random() * 9999);
+                    var jsonRpcRequest = "prime=X";
+                    $.ajax({
+                        url: uri,
+                        data: jsonRpcRequest,
+                        type: "GET",
+                        success: function (retValue) {
+                            //alert("Primed");
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+        });
+
+        // Get all item details and write to ul li
+        function itemDetailHandle(itemDetail) {
+            console.log(itemDetail);
+
+            if (itemDetail !== null) {
+                var itemName = itemDetail.ItemId.ItemName;
+                var itemUser = itemDetail.ItemId.Seller;
+                var url = itemDetail.ImageUrl;
+                var date = itemDetail.Expiration;
+                date = date.replace("/Date(", "");
+                date = date.replace(")/", "");
+                var dateVal = new Date(parseInt(date));
+                var bids = itemDetail.Bids;
+                var prices = new Array(itemDetail.Bids.length);
+                for (var i = 0; i < itemDetail.Bids.length; i++) {
+                    prices[i] = bids[i].Amount;
+                }
+                var price = Math.max.apply(Math, prices);
+                var bidCount = itemDetail.Bids.length;
+
+                // Create ul li
+                makeList(itemName, itemUser, url, dateVal, price, bidCount, bids);
+                var classname = "time" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var now = new Date();
+                if (dateVal > now) {
+                    $("." + classname).countdown({ until: dateVal, compact: true, format: 'yowdHMS' });
+                }
+            }
+        }
+
+        function makeList(itemName, itemUser, url, date, price, bids, bidsdetail) {
+            var ul = document.getElementById("AuctionList");
+            var list = document.createElement('li');
+            list.className = "list-group-item";
+            var imgdiv = document.createElement("div");
+            imgdiv.className = "left";
+            imgdiv.style.overflow = "hidden";
+            var img = document.createElement('img');
+            img.className = "image";
+            img.src = url;
+            img.width = "150";
+            img.height = "150";
+            var div2 = document.createElement("div");
+            var divname = document.createElement("div");
+            divname.className = "name";
+            var span = document.createElement("span");
+            span.innerHTML = itemName;
+            span.id = "fname" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            var sellerNameLabelSpan = document.createElement("span");
+            sellerNameLabelSpan.className = "sellerName";
+            sellerNameLabelSpan.innerHTML = "Seller Contact: ";
+            sellerNameLabelSpan.id = "sellerNameLabel" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            var sellerNameSpan = document.createElement("span");
+            sellerNameSpan.className = "sellerName";
+            sellerNameSpan.innerHTML = itemUser;
+            sellerNameSpan.id = "sellerName" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            var spanPrice = document.createElement("span");
+            spanPrice.className = "price";
+            spanPrice.id = "price" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            spanPrice.innerHTML = price;
+            var spanPriceSign = document.createElement("span");
+            spanPriceSign.className = "price";
+            spanPriceSign.innerHTML = "$";
+            var spanYourBid = document.createElement("span");
+            spanYourBid.className = "yourbid2";
+            spanYourBid.innerHTML = "Your bid: $";
+            var spanBid = document.createElement("span");
+            spanBid.className = "yourbid";
+            spanBid.id = "yourbid" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            var mybid = 0;
+            var userEmail = sessionStorage.getItem("uemail");
+            if (userEmail != "" && userEmail != null) {
+                for (var i = 0; i < bidsdetail.length ; i++) {
+                    if (bidsdetail[i].Bidder === userEmail) {
+                        mybid = bidsdetail[i].Amount;
+                    }
+                }
+            }
+            spanBid.innerHTML = mybid;
+
+            var button = document.createElement("button");
+            button.name = itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            button.className = "place btn btn-lg btn-primary";
+            button.innerHTML = "Place Bid";
+            var input = document.createElement("input");
+            input.id = "input" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            input.className = "input";
+            input.type = "text";
+            input.size = "14";
+            var dollar = document.createElement("span");
+            dollar.innerHTML = "$";
+            dollar.className = "dollar";
+            var divbuttominfo = document.createElement("div");
+            divbuttominfo.className = "buttonfo"
+            var spanbids = document.createElement("span");
+            spanbids.className = "bids";
+            var spanbidsnum = document.createElement("span");
+            spanbidsnum.id = "bids" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+            if (bids === "}") {
+                bids = 0;
+            }
+            spanbidsnum.innerHTML = bids;
+            var spanbidtext = document.createElement("span");
+            spanbidtext.innerHTML = " bids total";
+            var i = document.createElement("i");
+            i.className = "glyphicon glyphicon-time";
+            var spantime = document.createElement("span");
+            spantime.className = "time" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+
+            var now = new Date();
+            if (date < now) {
+                spantime.innerHTML = "Expired";
+                spantime.style.color = "#D02626";
+                button.style.backgroundColor = "#BFBFBF";
+                button.style.color = "#1D1D1D";
+            }
+            else {
+                spantime.innerHTML = date;
+            }
+
+            spanbids.appendChild(spanbidsnum);
+            spanbids.appendChild(spanbidtext);
+            divbuttominfo.appendChild(spanbids);
+            divbuttominfo.appendChild(i);
+            divbuttominfo.appendChild(spantime);
+            divname.appendChild(span);
+            divname.appendChild(document.createElement("br"));
+            div2.appendChild(button);
+            div2.appendChild(input);
+            div2.appendChild(dollar);
+            divname.appendChild(sellerNameLabelSpan);
+            divname.appendChild(sellerNameSpan);
+            div2.appendChild(divname);
+            div2.appendChild(spanPriceSign);
+            div2.appendChild(spanPrice);
+            div2.appendChild(spanYourBid);
+            div2.appendChild(spanBid);
+            imgdiv.appendChild(img);
+            list.appendChild(imgdiv);
+            list.appendChild(div2);
+            list.appendChild(divbuttominfo);
+            ul.appendChild(list);
+        }
+
+        $(document).ready(function () {
+            $(document).on('click', ".place", function () {
+                var userEmail = sessionStorage.getItem("uemail");
+
+                if (userEmail === "" || userEmail === null) {
+                    alert("Please log in and then place the bid on the item");
+                    hidediv();
+                    return;
+                }
+                var itemName = $(this).attr("name");
+                var itemNameNoSpace = itemName;
+                var bidvalue = parseInt(document.getElementById("input" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')).value);
+                //var itemNameNoSpace = itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
+                var highest = parseInt(document.getElementById("price" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')).innerHTML);
+
+                if (highest < bidvalue) {
+                    var fullName = document.getElementById("fname" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')).innerText;
+                    var sellerEmail = document.getElementById("sellerName" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')).innerHTML;
+
+                    // Place a bid
+                    JsonRpcClient.sendJsonRpcRequest(
+                    "PlaceBidAsync",
+                    [userEmail, sellerEmail, fullName, bidvalue],
+                    'GET',
+                    function placeBidHandler(result) {
+                        for (var i = 0; i < result.length; i++) {
+                            if (result[i].Bidder === document.getElementById("useremaildisplay").innerHTML) {
+                                document.getElementById("yourbid" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')).innerHTML = result[i].Amount;
+                                document.getElementById("price" + itemName.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '')).innerHTML = result[i].Amount;
+                                var bids = document.getElementById("bids" + itemNameNoSpace).innerHTML
+                                $("#bids" + itemNameNoSpace).text(parseInt(bids) + 1);
+                            }
+                        }
+                    });
+                }
+                else {
+                    alert("Your bid failed.");
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>
